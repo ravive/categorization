@@ -9,7 +9,7 @@ public class KeyWordsTest {
 
     @Test
     public void findTheRightKeyWordWhenWithContainWord() {
-        KeyWords keyWords = new KeyWords(Arrays.asList("Dog","Big dog"));
+        KeyWordsImpl keyWords = new KeyWordsImpl(Arrays.asList("Dog","Big dog"));
         System.out.print(keyWords.toString());
         LinkedList<String> t = new LinkedList<>();
         t.addAll(Arrays.asList("big dog over there with other dog".split(" ")));
@@ -18,7 +18,7 @@ public class KeyWordsTest {
 
     @Test
     public void findTheRightKeyWordWhenWordIsLast() {
-        KeyWords keyWords = new KeyWords(Arrays.asList("dog","big dog"));
+        KeyWordsImpl keyWords = new KeyWordsImpl(Arrays.asList("dog","big dog"));
         LinkedList<String> t = new LinkedList<>();
         t.addAll(Arrays.asList("dog".split(" ")));
         Assert.assertTrue( keyWords.getKeyWord(t).equals("dog"));
@@ -26,7 +26,7 @@ public class KeyWordsTest {
 
     @Test
     public void findTheRightKeyWordWithThreeContainWord() {
-        KeyWords keyWords = new KeyWords(Arrays.asList("Big Data","Big Data Analytics"));
+        KeyWordsImpl keyWords = new KeyWordsImpl(Arrays.asList("Big Data","Big Data Analytics"));
         LinkedList<String> t = new LinkedList<>();
         t.addAll(Arrays.asList("Big Data Analytics with Big Data".split(" ")));
         Assert.assertTrue( keyWords.getKeyWord(t).equals("Big Data Analytics"));
@@ -34,7 +34,7 @@ public class KeyWordsTest {
 
     @Test
     public void findTheSingleKeyWordWithThreeContainWord() {
-        KeyWords keyWords = new KeyWords(Arrays.asList("Big Data","Big Data Analytics"));
+        KeyWordsImpl keyWords = new KeyWordsImpl(Arrays.asList("Big Data","Big Data Analytics"));
         LinkedList<String> t = new LinkedList<>();
         t.addAll(Arrays.asList("Big Data".split(" ")));
         Assert.assertTrue( keyWords.getKeyWord(t).equals("Big Data"));
@@ -42,7 +42,7 @@ public class KeyWordsTest {
 
     @Test
     public void notFindInvalidKeyWords() {
-        KeyWords keyWords = new KeyWords(Arrays.asList("Big Data"));
+        KeyWordsImpl keyWords = new KeyWordsImpl(Arrays.asList("Big Data"));
         LinkedList<String> t = new LinkedList<>();
         t.addAll(Arrays.asList("Big People".split(" ")));
         Assert.assertTrue(keyWords.getKeyWord(t) == null);

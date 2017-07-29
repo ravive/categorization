@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class CategorizeTest {
 
-    KeyWords keyWords = new KeyWords(Arrays.asList("President" ,
+    KeyWordsImpl keyWords = new KeyWordsImpl(Arrays.asList("President" ,
             "vice President" ,
             "Sales" ,
             "Marketing" ,

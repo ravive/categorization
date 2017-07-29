@@ -11,11 +11,13 @@ import java.util.List;
  */
 public class FileKeyWordResource implements KeyWordResource {
 
-    final static Logger logger = Logger.getLogger(FileKeyWordResource.class);
+    private final static Logger logger = Logger.getLogger(FileKeyWordResource.class);
     private String name;
+    private KeyWordsFactory keyWordsFactory;
 
-    public FileKeyWordResource(String name) {
+    FileKeyWordResource(KeyWordsFactory keyWordsFactory, String name) {
       this.name = name;
+      this.keyWordsFactory = keyWordsFactory;
     }
 
     @Override
@@ -24,9 +26,8 @@ public class FileKeyWordResource implements KeyWordResource {
         try {
             List<String> words = Files.readAllLines(
                             Paths.get(this.getClass().getResource(name).toURI()), Charset.defaultCharset());
-            return new KeyWords(words);
+            return keyWordsFactory.create(words);
         } catch (Exception e) {
-            System.out.print(e.getStackTrace());
             logger.error("failed to load key words with error ",e);
             throw new RuntimeException(e);
         }
